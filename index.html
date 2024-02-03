@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Visualization</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div>
+      <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctx = document.getElementById("myChart");
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: [
+            "January",
+            "Febuary",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ],
+          datasets: [
+            {
+              label: "Monthly Sales Data",
+              data: [59, 65, 45, 55, 72, 83, 67, 63, 75, 77, 70, 87],
+              backgroundColor: ["rgba(103,242,209,.5)"],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+
+      anime({
+        targets: "#myChart",
+        backgroundColor: "cyan",
+        //translateX: ["-200", "0", "200", "0"],
+        borderRadius: ["0%", "100%", "0%"],
+        delay: 3000,
+        translateX: [
+          { value: -250, duration: 200, delay: 100 },
+          { value: 250, duration: 1000, delay: 500 },
+          { value: 0, duration: 1000, delay: 500 },
+        ],
+        translateY: [
+          { value: -100, duration: 500, delay: 1000 },
+          { value: 100, duration: 500, delay: 1000 },
+          { value: 0, duration: 500, delay: 1000 },
+        ],
+
+        duration: 2000,
+        loop: 1,
+        easing: "easeInOutQuad",
+      });
+    </script>
+  </body>
+</html>
